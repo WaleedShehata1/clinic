@@ -23,9 +23,10 @@ import 'package:flutter/material.dart';
 class AppRouter{
   
   static final Map<String, Widget Function(BuildContext)> router = {
-    '/': (context) =>   SplashScreen(),
+    // '/': (context) =>   SplashScreen(),
+    '/': (context) =>   const Home(),
    // '/': (context) =>   SplashScreen(),
-     "/Homepage": (context) =>  const Home(),
+   //   "/Homepage": (context) =>  const Home(),
     AppRoutes.splash: (context) =>  SplashScreen(),
     AppRoutes.onBoarding: (context) => const OnBoarding(),
     AppRoutes.signupScreen: (context) => const SignUp(),

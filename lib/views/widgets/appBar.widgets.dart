@@ -4,6 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
+import '../screens/chat/chat_page.dart';
+import '../screens/notification/notification_page.dart';
+
 class AppBarWibget extends StatelessWidget {
   final int? currentIndex;
   final Function()? onPressLeading;
@@ -11,14 +14,18 @@ class AppBarWibget extends StatelessWidget {
   final String? title;
   final Color bgColor;
   const AppBarWibget(
-      {super.key, this.currentIndex, this.onPressLeading, this.onPressAction, this.title,required this.bgColor});
+      {super.key,
+      this.currentIndex,
+      this.onPressLeading,
+      this.onPressAction,
+      this.title,
+      required this.bgColor});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-        backgroundColor: currentIndex != null && currentIndex == 5
-          ? AppColors.appBg
-          : bgColor ,
+      backgroundColor:
+          currentIndex != null && currentIndex == 5 ? AppColors.appBg : bgColor,
       centerTitle: true,
       title: currentIndex != null && currentIndex == 10
           ? Text(
@@ -65,11 +72,13 @@ class AppBarWibget extends StatelessWidget {
                 )
               : GestureDetector(
                   onTap: onPressLeading,
-                  child:  Padding(
-                    padding: EdgeInsets.all(8.0),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
                     child: Icon(
                       Icons.arrow_back,
-                      color: currentIndex! == 11?AppColors.whiteColor:AppColors.primaryColor ,
+                      color: currentIndex! == 11
+                          ? AppColors.whiteColor
+                          : AppColors.primaryColor,
                     ),
                   ),
                 ),
@@ -115,16 +124,34 @@ class AppBarWibget extends StatelessWidget {
                         //       color: Colors.black,
                         //     ),
                         InkWell(
-                            onTap: () {},
-                            child: SvgPicture.asset(ImagesPath.icMessage,color: currentIndex == 11?AppColors.whiteColor:AppColors.primaryColor,)
+                            onTap: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return const ChatPage();
+                              }));
+                            },
+                            child: SvgPicture.asset(
+                              ImagesPath.icMessage,
+                              color: currentIndex == 11
+                                  ? AppColors.whiteColor
+                                  : AppColors.primaryColor,
+                            )
                             // child: const Icon(
                             //   Icons.messenger_outline_outlined,
                             //   color: AppColors.primaryColor,
                             // )
                             ),
                         IconButton(
-                            onPressed: () {},
-                            icon: SvgPicture.asset(ImagesPath.icNotifations,color: currentIndex == 11?AppColors.whiteColor:AppColors.primaryColor)
+                            onPressed: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return const NotificationPage();
+                              }));
+                            },
+                            icon: SvgPicture.asset(ImagesPath.icNotifations,
+                                color: currentIndex == 11
+                                    ? AppColors.whiteColor
+                                    : AppColors.primaryColor)
                             //  const Icon(Icons.notifications_none_rounded,
                             //     color: AppColors.primaryColor)
                             )
